@@ -19,7 +19,8 @@ int show_menu(char* tb)
 
 		printf("Options: \n");
 		printf("1 - Add a note: \n");
-		printf("2 - Exit App \n");
+		printf("2 - List all Notes: \n");
+		printf("3 - Exit App \n");
 
 		printf("Choose an option\n");
 		scanf("%d", &opt);
@@ -33,6 +34,9 @@ int show_menu(char* tb)
 				system("clear");
 				break;
 			case 2:
+				list_all();
+				break;
+			case 3:
 				printf("Exiting...\n");
 				return 0;
 			default:
