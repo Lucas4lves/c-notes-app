@@ -5,5 +5,5 @@
 #include<stdio.h>
 int open_db(char* db_filepath);
 int create_table(char* table_name);
-void insert_into(char* table_name);
+int insert_into(char* table_name, char * note);
 #endif

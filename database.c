@@ -1,6 +1,7 @@
 #include"./database.h"
 
 sqlite3 * db = NULL;
+int id_store = 0;
 
 int open_db(char* db_filepath)
 {
@@ -38,7 +39,26 @@ int create_table(char* table_name)
     return res;
 }
 
-void insert_into(char* table_name)
+int insert_into(char* table_name, char* note)
 {
+	char* err_msg = 0;
+	char sql[256];
 
+	snprintf(sql, sizeof(sql), 
+			"INSERT INTO %s"
+			"(id, note) VALUES("
+            "NULL,'%s'"
+            ");",
+            table_name, note);
+            
+    int res = sqlite3_exec(db, sql, 0, 0, &err_msg);
+
+    if(res != SQLITE_OK )
+    {
+        printf("SQL error: %s\n", err_msg);
+        sqlite3_free(err_msg);
+        return -1;
+    }
+
+    return res;
 }

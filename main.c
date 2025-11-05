@@ -9,6 +9,7 @@ int main()
         return -1;
     }
 
-    create_table("tables");
+    create_table("notes");
+    insert_into("notes", "This is a sample note");
     return 0;
 }
