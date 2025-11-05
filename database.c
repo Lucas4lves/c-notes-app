@@ -62,3 +62,37 @@ int insert_into(char* table_name, char* note)
 
     return res;
 }
+
+int print_callback(void * data, int argc, char * argv[], char * azColName[])
+{
+    for(int i = 0; i < argc; ++i)
+    {
+        printf("%s = %s\n", azColName[i], argv[i] ? argv[i] : "NULL");
+    }
+
+    printf("\n");
+
+    return 0;
+}
+
+int list_all(char* table_name)
+{
+    char* err_msg = 0;
+    char sql[256];
+
+    snprintf(sql, sizeof(sql),
+             "SELECT * FROM %s;",
+             table_name);
+
+    int res = sqlite3_exec(db, sql, print_callback, 0, &err_msg);
+
+    if(res != SQLITE_OK )
+    {
+        printf("SQL error: %s\n", err_msg);
+        sqlite3_free(err_msg);
+        return -1;
+    }
+
+    return res;
+
+}

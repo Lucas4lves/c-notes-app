@@ -11,5 +11,7 @@ int main()
 
     create_table("notes");
     insert_into("notes", "This is a sample note");
+
+    list_all("notes");
     return 0;
 }
