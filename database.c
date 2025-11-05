@@ -110,3 +110,19 @@ int close_db()
 	return 0;
 }
 
+char* prompt_note()
+{
+	char * content = malloc(256);	
+	printf("Enter the text for the new note: \n");
+	fgets(content, 256, stdin);
+
+	return content;
+}
+
+void add_note(char* table_name)
+{
+	char* c = prompt_note();
+	insert_into(table_name, c);
+	free(c);
+}
+
