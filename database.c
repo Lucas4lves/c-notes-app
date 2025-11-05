@@ -81,14 +81,10 @@ int print_callback(void * data, int argc, char * argv[], char * azColName[])
     return 0;
 }
 
-int list_all(char* table_name)
+int list_all()
 {
     char* err_msg = 0;
-    char sql[256];
-
-    snprintf(sql, sizeof(sql),
-             "SELECT * FROM %s;",
-             table_name);
+    char * sql = "SELECT * from notes";
 
     int res = sqlite3_exec(db, sql, print_callback, 0, &err_msg);
 
