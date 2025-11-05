@@ -18,6 +18,7 @@ int show_menu()
 		{
 			case 1:
 				add_note(tb);
+				//system("clear");
 				break;
 			case 2:
 				printf("Exiting...");
