@@ -1,9 +1,6 @@
 #include <stdio.h>
-#include<stdlib.h>
-#include"./database.h"
-
-
-char* prompt_note();
+#include "./database.h"
+#include "./ui.h"
 
 int main()
 {
@@ -15,12 +12,7 @@ int main()
 
     create_table("notes");
 
-	char* new_note = prompt_note();	
-
-    insert_into("notes", new_note);
-
-    list_all("notes");
-
+	show_menu();	
 	
 	if(close_db() != SQLITE_OK)
 	{
@@ -32,12 +24,3 @@ int main()
 }
 
 
-char* prompt_note()
-{
-	char * content = malloc(256);	
-	printf("Enter the text for the new note: \n");
-	fgets(content, 256, stdin);
-
-	return content;
-	
-}
