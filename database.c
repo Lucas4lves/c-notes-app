@@ -42,23 +42,29 @@ int create_table(char* table_name)
 int insert_into(char* table_name, char* note)
 {
 	char* err_msg = 0;
-	char sql[256];
+	char * sql = "INSERT INTO notes (id, note) VALUES (NULL, ?)";
+    sqlite3_stmt * stmt;
 
-	snprintf(sql, sizeof(sql), 
-			"INSERT INTO %s"
-			"(id, note) VALUES("
-            "NULL,'%s'"
-            ");",
-            table_name, note);
-            
-    int res = sqlite3_exec(db, sql, 0, 0, &err_msg);
+    int res = sqlite3_prepare_v2(db, sql, -1, &stmt, NULL);
+	// snprintf(sql, sizeof(sql), 
+	// 		"INSERT INTO %s"
+	// 		"(id, note) VALUES("
+    //         "NULL,'%s'"
+    //         ");",
+    //         table_name, note);
+    sqlite3_bind_text(stmt, 1, note, -1, NULL);
 
-    if(res != SQLITE_OK )
+    res = sqlite3_step(stmt);
+
+    if(res != SQLITE_DONE )
     {
-        printf("SQL error: %s\n", err_msg);
+        printf("SQL error: %s\n", sqlite3_errmsg(db));
+        sqlite3_finalize(stmt);
         sqlite3_free(err_msg);
         return -1;
     }
+
+    sqlite3_finalize(stmt);
 
     return res;
 }
