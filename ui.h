@@ -2,8 +2,11 @@
 #define UI_H
 
 #include<stdio.h>
+#include<stdlib.h>
 #include"./database.h"
 
-int show_menu();
+
+char * get_table();
+int show_menu(char* tb);
 
 #endif
