@@ -96,3 +96,17 @@ int list_all(char* table_name)
     return res;
 
 }
+
+
+int close_db() 
+{
+	int rc = sqlite3_close(db);
+
+	if(rc != SQLITE_OK){
+		printf("ERROR: unable to close connection");
+		return -1;	
+	}
+
+	return 0;
+}
+
