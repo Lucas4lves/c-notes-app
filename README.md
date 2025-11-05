@@ -52,6 +52,8 @@ make clean
 ├── main.c          # Main application entry point
 ├── database.h      # Database function declarations
 ├── database.c      # Database implementation using SQLite3
+├── ui.h            # User interface function declarations
+├── ui.c            # User interface implementation
 ├── Makefile        # Build configuration
 ├── notes.db        # SQLite database file (created at runtime)
 └── notes           # Compiled executable
