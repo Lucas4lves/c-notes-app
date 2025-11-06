@@ -76,7 +76,7 @@ int print_callback(void * data, int argc, char * argv[], char * azColName[])
     return 0;
 }
 
-int list_all()
+int find_all()
 {
     char* err_msg = 0;
     char * sql = "SELECT * from notes";

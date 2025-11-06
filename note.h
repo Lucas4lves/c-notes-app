@@ -8,5 +8,6 @@ typedef struct Note {
 
 Note * new_note(char * content);
 void add_note();
+void list_all_notes();
 Note * prompt_note(void);
 #endif
