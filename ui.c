@@ -31,10 +31,9 @@ int show_menu()
 		{
 			case 1:
 				add_note();
-				system("clear");
 				break;
 			case 2:
-				list_all();
+				list_all_notes();
 				break;
 			case 3:
 				printf("Exiting...\n");

@@ -26,3 +26,11 @@ void add_note()
 	insert_into(n);
 	free(n);
 }
+
+void list_all_notes()
+{
+    if(find_all() != 0)
+    {
+        printf("ERROR: failed to list all records\n");
+    }
+}

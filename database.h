@@ -9,7 +9,7 @@
 int open_db(char* db_filepath);
 int create_table(char* table_name);
 int insert_into(Note * note);
-int list_all();
+int find_all();
 int print_callback(void * data, int argc, char * argv[], char * azColName[]);
 int close_db();
 #endif
