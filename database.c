@@ -39,7 +39,7 @@ int create_table(char* table_name)
     return res;
 }
 
-int insert_into(char* table_name, char* note)
+int insert_into(char* note)
 {
 	char* err_msg = 0;
 	char * sql = "INSERT INTO notes (id, note) VALUES (NULL, ?)";
@@ -121,10 +121,10 @@ char* prompt_note()
 	return content;
 }
 
-void add_note(char* table_name)
+void add_note()
 {
 	char* c = prompt_note();
-	insert_into(table_name, c);
+	insert_into(c);
 	free(c);
 }
 

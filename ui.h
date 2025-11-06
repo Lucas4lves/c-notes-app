@@ -5,8 +5,6 @@
 #include<stdlib.h>
 #include"./database.h"
 
-
-char * get_table();
-int show_menu(char* tb);
+int show_menu();
 
 #endif
