@@ -39,20 +39,15 @@ int create_table(char* table_name)
     return res;
 }
 
-int insert_into(char* note)
+int insert_into(Note * note)
 {
 	char* err_msg = 0;
 	char * sql = "INSERT INTO notes (id, note) VALUES (NULL, ?)";
     sqlite3_stmt * stmt;
 
     int res = sqlite3_prepare_v2(db, sql, -1, &stmt, NULL);
-	// snprintf(sql, sizeof(sql), 
-	// 		"INSERT INTO %s"
-	// 		"(id, note) VALUES("
-    //         "NULL,'%s'"
-    //         ");",
-    //         table_name, note);
-    sqlite3_bind_text(stmt, 1, note, -1, NULL);
+
+    sqlite3_bind_text(stmt, 1, note->note, -1, NULL);
 
     res = sqlite3_step(stmt);
 
@@ -110,21 +105,5 @@ int close_db()
 	}
 
 	return 0;
-}
-
-char* prompt_note()
-{
-	char * content = malloc(256);	
-	printf("Enter the text for the new note: \n");
-	fgets(content, 256, stdin);
-
-	return content;
-}
-
-void add_note()
-{
-	char* c = prompt_note();
-	insert_into(c);
-	free(c);
 }
 
