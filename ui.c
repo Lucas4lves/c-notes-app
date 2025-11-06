@@ -1,14 +1,5 @@
 #include "./ui.h"
 
-char* get_table()
-{
-	char* table = malloc(256);	
-	printf("Select your table: \n");
-	fgets(table, sizeof(table), stdin);
-		
-	return table;
-}
-
 int show_menu()
 {
 	while(1)
@@ -31,9 +22,15 @@ int show_menu()
 		{
 			case 1:
 				add_note();
+				printf("\nNote successfully add, press any key to return...");
+				getchar();
+				system("clear");
 				break;
 			case 2:
 				list_all_notes();
+				printf("\nPress any key to return...");
+				getchar();
+				system("clear");
 				break;
 			case 3:
 				printf("Exiting...\n");
