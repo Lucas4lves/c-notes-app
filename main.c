@@ -12,10 +12,7 @@ int main()
 
     create_table("notes");
 
-	char* selected_table = get_table();
-	show_menu(selected_table);	
-
-    free(selected_table);
+	show_menu();	
 	
 	if(close_db() != SQLITE_OK)
 	{

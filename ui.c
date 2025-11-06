@@ -9,7 +9,7 @@ char* get_table()
 	return table;
 }
 
-int show_menu(char* tb)
+int show_menu()
 {
 	while(1)
 	{
@@ -30,7 +30,7 @@ int show_menu(char* tb)
 		switch(opt)
 		{
 			case 1:
-				add_note(tb);
+				add_note();
 				system("clear");
 				break;
 			case 2:
