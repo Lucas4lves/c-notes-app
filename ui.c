@@ -5,8 +5,10 @@ int show_menu()
 	while(1)
 	{
 		int opt = 0;
-
-		printf("NOTES APP\n");
+		system("clear");
+		printf("____________\n");
+		printf("  NOTES APP \n");
+		printf("------------\n");
 
 		printf("Options: \n");
 		printf("1 - Add a note: \n");
@@ -21,12 +23,14 @@ int show_menu()
 		switch(opt)
 		{
 			case 1:
+				system("clear");
 				add_note();
 				printf("\nNote successfully add, press any key to return...");
 				getchar();
 				system("clear");
 				break;
 			case 2:
+				system("clear");
 				list_all_notes();
 				printf("\nPress any key to return...");
 				getchar();

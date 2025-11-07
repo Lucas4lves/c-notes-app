@@ -4,7 +4,7 @@
 Note * new_note(char * content)
 {
     Note * n = (Note *)malloc(sizeof(Note));
-    n->id = 0; // id will be set when inserting into the database
+    n->id = 0; 
     n->note = content;
     return n;
 }
@@ -29,6 +29,7 @@ void add_note()
 
 void list_all_notes()
 {
+    printf("ID\tNOTE");
     if(find_all() != 0)
     {
         printf("ERROR: failed to list all records\n");
