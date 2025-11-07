@@ -66,12 +66,11 @@ int insert_into(Note * note)
 
 int print_callback(void * data, int argc, char * argv[], char * azColName[])
 {
+    printf("\n");
     for(int i = 0; i < argc; ++i)
     {
-        printf("%s = %s\n", azColName[i], argv[i] ? argv[i] : "NULL");
+        printf("%s\t", argv[i] ? argv[i] : "NULL");
     }
-
-    printf("\n");
 
     return 0;
 }
