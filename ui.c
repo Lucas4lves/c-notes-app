@@ -13,7 +13,8 @@ int show_menu()
 		printf("Options: \n");
 		printf("1 - Add a note: \n");
 		printf("2 - List all Notes: \n");
-		printf("3 - Exit App \n");
+		printf("3 - Delete a Note: \n");
+		printf("4 - Exit App \n");
 
 		printf("Choose an option\n");
 		scanf("%d", &opt);
@@ -37,6 +38,13 @@ int show_menu()
 				system("clear");
 				break;
 			case 3:
+				system("clear");
+				delete_note();
+				printf("\nPress any key to return...");
+				getchar();
+				system("clear");
+				break;
+			case 4:
 				printf("Exiting...\n");
 				return 0;
 			default:

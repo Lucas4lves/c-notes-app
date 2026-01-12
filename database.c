@@ -1,5 +1,6 @@
 #include"./database.h"
 
+
 sqlite3 * db = NULL;
 int id_store = 0;
 
@@ -39,9 +40,10 @@ int create_table(char* table_name)
     return res;
 }
 
-int insert_into(Note * note)
+Result insert_into(Note * note)
 {
-	char* err_msg = 0;
+    Result r;
+    r.error_msg = 0; 
 	char * sql = "INSERT INTO notes (id, note) VALUES (NULL, ?)";
     sqlite3_stmt * stmt;
 
@@ -55,13 +57,16 @@ int insert_into(Note * note)
     {
         printf("SQL error: %s\n", sqlite3_errmsg(db));
         sqlite3_finalize(stmt);
-        sqlite3_free(err_msg);
-        return -1;
+        sqlite3_free(r.error_msg);
+        r.exit_code = -1;
+        return r;
     }
 
     sqlite3_finalize(stmt);
 
-    return res;
+    r.exit_code = 0;
+    r.error_msg = NULL;
+    return r;
 }
 
 int print_callback(void * data, int argc, char * argv[], char * azColName[])
@@ -93,6 +98,28 @@ int find_all()
 
 }
 
+int delete(int note_id)
+{
+    char * err_msg = 0;
+    char * sql = "DELETE FROM notes WHERE id = ?";
+    sqlite3_stmt * stmt;
+
+    int res = sqlite3_prepare_v2(db, sql, -1, &stmt, NULL);
+    sqlite3_bind_int(stmt, 1, note_id);
+
+    res = sqlite3_step(stmt);
+
+    if(res != SQLITE_DONE)
+    {
+        printf("SQL error: %s\n", err_msg);
+        sqlite3_free(err_msg);
+        return -1;
+    }
+
+    sqlite3_finalize(stmt);
+
+    return 0;
+}
 
 int close_db() 
 {
